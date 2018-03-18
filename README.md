@@ -1,15 +1,24 @@
-## Welcome to GitHub Pages
+## Snake Robot Based On ROS and V-REP
 
-You can use the [editor on GitHub](https://github.com/chiragmakwana0296/Snake_Robot_ROS/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This Project consist of Design and Development of moduler Snake Robot that uses ROS for robot programming and V-REP for robot simulation.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+I have developed verious Kinematic Model for robot locomotion:
+1)Serpentine 
+2)Side winding -Left. 
+3)Side winding -Right.
+4)Side winding -Clockwise Rotation.
+5)Side winding -Counterclockwise Rotation.
+6)Caterpiller Motion.
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Videos
+1. Serpentine 
+2. Side winding -Left. 
+3. Side winding -Right.
+4. Side winding -Clockwise Rotation.
+5. Side winding -Counterclockwise Rotation.
+6. Caterpiller Motion.
 
-```markdown
-Syntax highlighted code block
 
 # Header 1
 ## Header 2
