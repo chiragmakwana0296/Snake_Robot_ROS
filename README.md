@@ -1,6 +1,6 @@
 ## Snake Robot Based On ROS and V-REP
 
-This is my mini Project consist of Design Development and kinematic modeling of moduler Snake Robot locomotion that uses ROS for robot programming and V-REP for robot simulation. This robot is developed using 10 Servo motors, each joints consist of one servo motor.
+This is my mini Project consist of Design Development and kinematic modeling of modular Snake Robot locomotion that uses ROS for robot programming and V-REP for robot simulation. This robot is developed using 10 Servo motors, each joints consist of one servo motor.
 
 Kinematic Model for robot locomotion gaits:
 1. Serpentine 
