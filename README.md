@@ -8,37 +8,13 @@ I have developed verious Kinematic Model for robot locomotion:
 3. Side winding -Right.
 4. Side winding -Clockwise Rotation.
 5. Side winding -Counterclockwise Rotation.
-6. Caterpiller Motion.
 
 
 ### Videos
 1. Serpentine 
+[https://youtu.be/p8LNVXRu_hg](url)
 2. Side winding
 [https://youtu.be/Jq2VSU0Upp4](url)
 3. Side winding Rotation.
+[https://youtu.be/qEEdgViXngY](url)
 
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/chiragmakwana0296/Snake_Robot_ROS/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
