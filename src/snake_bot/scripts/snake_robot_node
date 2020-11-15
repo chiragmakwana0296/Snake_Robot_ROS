@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+import rospy 
+import snake_bot
+
+
+if __name__ == "__main__":
+    robotic_arm_client = snake_bot.SnakeRobot()
+    robotic_arm_client.connect()
