@@ -5,7 +5,7 @@ import vrep
 import time
 from sensor_msgs.msg import Joy
 from sensor_msgs.msg import JointState
-
+from snake_bot.srv import SetMode SetModeRequest SetModeResponse
 class SnakeRobot():
     def __init__(self,connectionAddress='127.0.0.1' , connectionPort= 19997, waitUntilConnected=True, doNotReconnectOnceDisconnected=True, timeOutInMs=5000, commThreadCycleInMs=5):
                 
@@ -18,7 +18,8 @@ class SnakeRobot():
         self.doNotReconnectOnceDisconnected = doNotReconnectOnceDisconnected
         self.timeOutInMs = timeOutInMs
         self.commThreadCycleInMs = commThreadCycleInMs
-
+        self.mode = None
+        self.set_mode_srv_server = rospy.Service('set_mode', SetMode, set_mode_srv)
         t1 = threading.Thread(target=self.subscriber_thread)
         t1.start()
         self.joint_state_pub = rospy.Publisher("/JointStates",JointState,queue_size=1)
@@ -59,6 +60,11 @@ class SnakeRobot():
         out= ( ((value-xmin)*(ymax-ymin))/(xmax-xmin) )+ymin
         return out
 
+    def set_mode_srv(self,req):
+        self.mode = req.mode
+        res = SetModeResponse()
+        res.success = True
+        return res
 
     def connect(self):
         vrep.simxFinish(-1) #close all opened connections
