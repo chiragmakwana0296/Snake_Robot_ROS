@@ -1,4 +1,6 @@
-# This file is part of the REMOTE API
+#!/usr/bin/env python
+
+# # This file is part of the REMOTE API
 # 
 # Copyright 2006-2017 Coppelia Robotics GmbH. All rights reserved. 
 # marc@coppeliarobotics.com

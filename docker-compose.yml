@@ -1,0 +1,77 @@
+version: "3.8"
+services:
+  ######################################################################################
+  ## Container for ROS-Devel Workspace
+  ## command: sudo docker-compose up ros-devel
+  ## Args:  - ROS_DISTRIBUTION=kinetic | meliodic | noetic
+  ##        - BUILD_TYPE= devel | install
+  ######################################################################################
+  ros-devel-snake:
+    build:
+      context: .
+      dockerfile: Dockerfile.ros
+      args:
+        - ROS_DISTRIBUTION=kinetic
+        - BUILD_TYPE=devel
+    container_name: ros-devel-snake
+    stdin_open: true
+    tty: true
+    network_mode: "host"
+    volumes:
+      - "./src:/root/catkin_ws/src:rw"
+    ports:
+      - "11311:11311"
+      - "19997:19997"
+    # devices:
+    #  - /dev/ttyACM0:/dev/ttyACM0
+    #  - /dev/input/js0
+    command: bash
+
+  ######################################################################################
+  ## Container for ROS-Install Workspace
+  ## command: sudo docker-compose up ros-install
+  ## Args:  - ROS_DISTRIBUTION=kinetic | meliodic | noetic
+  ##        - BUILD_TYPE= devel | install
+  ######################################################################################
+  ros-install-snake:
+    build:
+      context: .
+      dockerfile: Dockerfile.ros
+      args:
+        - ROS_DISTRIBUTION=kinetic
+        - BUILD_TYPE=install
+    container_name: ros-install-snake
+    stdin_open: true
+    tty: true
+    network_mode: "host"
+    environment:
+      - ROS_DISTRO=kinetic
+    volumes:
+      - "./src:/root/catkin_ws/src:rw"
+    ports:
+      - "11311:11311"
+      - "19997:19997"
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/input/js0
+  
+  ######################################################################################
+  ## Container for vrep
+  ## command: export UID=$(id -u) && export GID=$(id -g)
+  ##          sudo UID=${UID} GID=${GID} docker-compose up vrep
+  ######################################################################################
+  vrep: 
+    build:
+      context: .
+      dockerfile: Dockerfile.vrep
+    container_name: vrep
+    stdin_open: true
+    tty: true
+    user: "${UID}:${GID}"
+    environment:
+      - "DISPLAY"
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+      - "/etc/group:/etc/group:ro"
+      - "/etc/shadow:/etc/shadow:ro"
+    command: xvfb-run vrep.sh
