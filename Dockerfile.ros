@@ -3,11 +3,11 @@ FROM ros:$ROS_DISTRIBUTION-ros-base
 
 LABEL mantainer="chiragmakwana02@gmail.com"
 
+# Shell
 SHELL ["/bin/bash","-c"]
 COPY ./requirements /requirements
 
-RUN ls requirements
-# install required packages
+#Install required packages
 RUN apt-get update && cat /requirements/deb-packages.txt | xargs apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 # Install ROS Packages
@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-${ROS_DISTRO}-rosbridge-suite \  
     && rm -rf /var/lib/apt/lists/*
 
-#ROS workspace
+#ROS catkin workspace
 ARG BUILD_TYPE
 ENV BUILD_ENV=${BUILD_TYPE}
 ENV CATKIN_WS=/root/catkin_ws
@@ -25,7 +25,7 @@ RUN mkdir -p $CATKIN_WS/src
 WORKDIR $CATKIN_WS/src
 COPY ./src .
 
-# build and install packages
+#Build and install caatkin workspace 
 RUN if [ ${BUILD_ENV} = "install" ]; \
         then source /opt/ros/kinetic/setup.bash \
             && apt-get update \
@@ -41,15 +41,18 @@ RUN if [ ${BUILD_ENV} = "install" ]; \
             && catkin_make ; \
     else echo "Please select build type [install/devel]" ; \
     fi
-# copy scripts
-#COPY ./scripts/entrypoint.sh /
+
+#Copy scripts
 COPY ./scripts/entrypoint.sh /
 COPY ./scripts/ros-app.launch /
 
+#Expose pors
 EXPOSE 11311
 EXPOSE 19997
 
+# Change current workdir
 WORKDIR /root/catkin_ws
+
+# Entrypoint 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash source /entrypoint.sh"]
-
