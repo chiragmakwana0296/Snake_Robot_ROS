@@ -3,7 +3,7 @@ services:
   ######################################################################################
   ## Container for ROS-Devel Workspace
   ## command: sudo docker-compose up ros-devel
-  ## Args:  - ROS_DISTRIBUTION=kinetic | meliodic | noetic
+  ## Args:  - ROS_DISTRIBUTION=kinetic | melodic | noetic
   ##        - BUILD_TYPE= devel | install
   ######################################################################################
   ros-devel-snake:
@@ -30,7 +30,7 @@ services:
   ######################################################################################
   ## Container for ROS-Install Workspace
   ## command: sudo docker-compose up ros-install
-  ## Args:  - ROS_DISTRIBUTION=kinetic | meliodic | noetic
+  ## Args:  - ROS_DISTRIBUTION=kinetic | melodic | noetic
   ##        - BUILD_TYPE= devel | install
   ######################################################################################
   ros-install-snake:
